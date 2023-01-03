@@ -2,8 +2,10 @@
   <div class="hello">
     <p>hello everyone</p>
     <h1>{{ msg }}</h1>
-    <img alt="Vue logo" src="../assets/ker.jpg">
-    <img alt="Vue logo" src="../assets/man.jpg">
+    <img alt="Vue logo" src="../assets/ker.*.jpg">
+    <img alt="Vue logo" src="../assets/ker.*.jpg">
+    //<img alt="Vue logo" src="~@/assets/ker.jpg">
+    //<img alt="Vue logo" src="../assets/man.jpg">
   </div>
 
 </template>
