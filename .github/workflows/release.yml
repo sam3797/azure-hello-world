@@ -67,7 +67,7 @@ jobs:
         run: |
           aws eks create-cluster --name simple-bank \
                 --role-arn arn:aws:iam::042418029664:role/eksClusterRole \
-                --resources-vpc-config subnetIds=subnet-0c608ad9,subnet-009fb3d2,securityGroupIds=sg-0e860bf6
+                --resources-vpc-config subnetIds=subnet-06cc9c6c264bc7bd5,subnet-0c608ad906dabe5c3,securityGroupIds=sg-0e860bf67b9e631a6
 
       - name: Update kube config
         run: aws eks update-kubeconfig --name simple-bank --region us-east-1
