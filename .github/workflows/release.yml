@@ -61,13 +61,7 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-1
-      
-      - name: Creating kubernetes cluster
-        run: |
-          aws eks create-cluster --name simple-bank \
-                --role-arn arn:aws:iam::042418029664:role/eksClusterRole \
-                --resources-vpc-config subnetIds=subnet-009fb3d24d9b1cf38,subnet-0c608ad906dabe5c3,securityGroupIds=sg-0e860bf67b9e631a6
+          aws-region: us-east-1 
 
       - name: Update kube config
         run: aws eks update-kubeconfig --name simple-bank --region us-east-1
