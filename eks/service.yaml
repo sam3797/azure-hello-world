@@ -5,8 +5,8 @@ metadata:
 spec:
   selector:
     app: simple-bank-api
+  type: LoadBalancer
   ports:
-    - protocol: TCP
+  - nodePort: 31000
       port: 80
       targetPort: 8080
-  type: ClusterIP
