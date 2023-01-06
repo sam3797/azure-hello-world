@@ -68,7 +68,7 @@ jobs:
                 --role-arn arn:aws:iam::042418029664:role/eksClusterRole \
                 --resources-vpc-config subnetIds=subnet-009fb3d24d9b1cf38,subnet-0c608ad906dabe5c3,securityGroupIds=sg-0e860bf67b9e631a6 
      
-      - name: Creating kubernetes cluster
+      - name: Creating kubernetes nodegroup
            run: |
              aws eks create-nodegroup --cluster-name simple-bank \
 			--nodegroup-name simple-bank-node-group \
