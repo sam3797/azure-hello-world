@@ -66,10 +66,10 @@ jobs:
         run: |
           aws eks create-cluster --name simple-bank \
                 --role-arn arn:aws:iam::042418029664:role/eksClusterRole \
-                --resources-vpc-config subnetIds=subnet-009fb3d24d9b1cf38,subnet-0c608ad906dabe5c3,securityGroupIds=sg-0e860bf67b9e631a6 \
+                --resources-vpc-config subnetIds=subnet-009fb3d24d9b1cf38,subnet-0c608ad906dabe5c3,securityGroupIds=sg-0e860bf67b9e631a6 
           aws eks create-nodegroup --cluster-name simple-bank \
                 --nodegroup-name simple-bank-node-node-group
-                --scaling-config 2 \
+                --scaling-config 2 
                 #	--subnets subnet-009fb3d24d9b1cf38 subnet-0c608ad906dabe5c3 \
                 #--instance-types t2.micro 
 
