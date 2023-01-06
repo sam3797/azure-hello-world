@@ -61,12 +61,14 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-1 
+          aws-region: us-east-1
+
       - name: Creating kubernetes cluster
         run: |
           aws eks create-cluster --name simple-bank \
                 --role-arn arn:aws:iam::042418029664:role/eksClusterRole \
                 --resources-vpc-config subnetIds=subnet-009fb3d24d9b1cf38,subnet-0c608ad906dabe5c3,securityGroupIds=sg-0e860bf67b9e631a6
+
        - name: Creating node group
          run: |
           aws eks create-nodegroup --nodegroup-name simple-bank-node-group \ 
@@ -75,13 +77,12 @@ jobs:
 		--subnets "subnet-009fb3d24d9b1cf38" "subnet-0c608ad906dabe5c3" --instance-types "t2.micro" --ami-type "AL2_x86_64" --remote-access "ssh" ec2SshKey "kubernetes" \
 		--node-role arn:aws:iam::042418029664:instance-profile/AmazonEKSNodeRole
 
-
                 #      - name: Update kube config
                 #run: aws eks update-kubeconfig --name simple-bank --region us-east-1
 
-                #     - name: Deploy image to Amazon EKS
-                #run: |
-                #kubectl apply -f eks/aws-auth.yaml
-                #kubectl apply -f eks/deployment.yaml
-                #kubectl apply -f eks/service.yaml
-                #kubectl apply -f eks/ingress.yaml
+       - name: Deploy image to Amazon EKS
+         run: |
+           kubectl apply -f eks/aws-auth.yaml
+           kubectl apply -f eks/deployment.yaml
+           kubectl apply -f eks/service.yaml
+           kubectl apply -f eks/ingress.yaml
