@@ -27,13 +27,12 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-    
+
       - name: Install kubectl
         uses: azure/setup-kubectl@v1
         with:
           version: 'v1.21.3'
         id: install
-
 
       - name: Log in to the Container registry
         uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
@@ -55,7 +54,7 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-      
+
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -69,19 +68,19 @@ jobs:
                 --role-arn arn:aws:iam::042418029664:role/eksClusterRole \
                 --resources-vpc-config subnetIds=subnet-009fb3d24d9b1cf38,subnet-0c608ad906dabe5c3,securityGroupIds=sg-0e860bf67b9e631a6
 
-       - name: Creating node group
+      - name: Creating node group
          run: |
-          aws eks create-nodegroup --nodegroup-name simple-bank-node-group \ 
+          aws eks create-nodegroup --nodegroup-name simple-bank-node-group \
                 --cluster-name simple-bank \
-		--scaling-config 2 \
-		--subnets "subnet-009fb3d24d9b1cf38" "subnet-0c608ad906dabe5c3" --instance-types "t2.micro" --ami-type "AL2_x86_64" --remote-access "ssh" ec2SshKey "kubernetes" \
-		--node-role arn:aws:iam::042418029664:instance-profile/AmazonEKSNodeRole
+                --scaling-config 2 \
+                --subnets "subnet-009fb3d24d9b1cf38" "subnet-0c608ad906dabe5c3" --instance-types "t2.micro" --ami-type "AL2_x86_64" --remote-access "ssh" ec2SshKey "kubernetes" \
+                --node-role arn:aws:iam::042418029664:instance-profile/AmazonEKSNodeRole
 
-                #      - name: Update kube config
-                #run: aws eks update-kubeconfig --name simple-bank --region us-east-1
+#      - name: Update kube config
+#        run: aws eks update-kubeconfig --name simple-bank --region us-east-1
 
-       - name: Deploy image to Amazon EKS
-         run: |
+      - name: Deploy image to Amazon EKS
+        run: |
            kubectl apply -f eks/aws-auth.yaml
            kubectl apply -f eks/deployment.yaml
            kubectl apply -f eks/service.yaml
