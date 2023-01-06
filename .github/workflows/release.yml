@@ -73,8 +73,8 @@ jobs:
           aws eks create-nodegroup --cluster-name simple-bank \
                 --nodegroup-name simple-bank-node-node-group
                 --scaling-config 2 \
-		--subnets subnet-009fb3d24d9b1cf38 subnet-0c608ad906dabe5c3 \
-  		--instance-types t2.micro 
+                #	--subnets subnet-009fb3d24d9b1cf38 subnet-0c608ad906dabe5c3 \
+                #--instance-types t2.micro 
                 sleep 1200
 
       - name: Update kube config
