@@ -72,7 +72,7 @@ jobs:
         run: |
           aws eks create-nodegroup --nodegroup-name simple-bank-node-group \
                 --cluster-name simple-bank \
-                --scaling-config 2 \
+                --scaling-config minSize=2,maxSize=2,desiredSize=2 \
                 --subnets "subnet-009fb3d24d9b1cf38" "subnet-0c608ad906dabe5c3" --instance-types "t2.micro" --ami-type "AL2_x86_64" --remote-access "ssh" \
                 --node-role arn:aws:iam::042418029664:instance-profile/AmazonEKSNodeRole
 
