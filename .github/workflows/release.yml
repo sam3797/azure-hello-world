@@ -73,7 +73,7 @@ jobs:
           aws eks create-nodegroup --nodegroup-name simple-bank-node-group \
                 --cluster-name simple-bank \
                 --scaling-config 2 \
-                --subnets "subnet-009fb3d24d9b1cf38" "subnet-0c608ad906dabe5c3" --instance-types "t2.micro" --ami-type "AL2_x86_64" --remote-access "ssh" ec2SshKey "kubernetes" \
+                --subnets "subnet-009fb3d24d9b1cf38" "subnet-0c608ad906dabe5c3" --instance-types "t2.micro" --ami-type "AL2_x86_64" --remote-access "ssh" --key-pair-ids key-03288b61f7528e812 \
                 --node-role arn:aws:iam::042418029664:instance-profile/AmazonEKSNodeRole
 
 #      - name: Update kube config
