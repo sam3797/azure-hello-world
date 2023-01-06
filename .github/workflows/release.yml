@@ -69,7 +69,7 @@ jobs:
                 --resources-vpc-config subnetIds=subnet-009fb3d24d9b1cf38,subnet-0c608ad906dabe5c3,securityGroupIds=sg-0e860bf67b9e631a6
 
       - name: Creating node group
-         run: |
+        run: |
           aws eks create-nodegroup --nodegroup-name simple-bank-node-group \
                 --cluster-name simple-bank \
                 --scaling-config 2 \
