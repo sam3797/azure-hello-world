@@ -70,14 +70,14 @@ jobs:
 
       - name: Creating node group
         run: |
-          aws eks create-nodegroup --nodegroup-name simple-bank-node-group \
+          aws eks create-nodegroup --nodegroup-name simple-bank-node \
                 --cluster-name simple-bank \
                 --scaling-config minSize=2,maxSize=2,desiredSize=2 \
                 --subnets "subnet-009fb3d24d9b1cf38" "subnet-0c608ad906dabe5c3" --instance-types "t2.micro" --ami-type "AL2_x86_64"  \
-                --node-role arn:aws:iam::042418029664:role/AmazonEKSNodeRole --tags KeyName1=kube-system
+                --node-role arn:aws:iam::042418029664:role/AmazonEKSNodeRole --tags Name=kube-system
 
-#      - name: Update kube config
-#        run: aws eks update-kubeconfig --name simple-bank --region us-east-1
+      - name: Update kube config
+        run: aws eks update-kubeconfig --name simple-bank --region us-east-1
 
       - name: Deploy image to Amazon EKS
         run: |
