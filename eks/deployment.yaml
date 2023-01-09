@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: simple-bank-api
-        image: ghcr.io/sam3797/hello-world:master-64
+        image: ghcr.io/sam3797/hello-world:master-${{ github.run_number }}
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
