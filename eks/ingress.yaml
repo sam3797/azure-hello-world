@@ -9,7 +9,7 @@ spec:
     rules:
     - http:
         paths:
-        - path: /home
+        - path: /var/www/html
           pathType: Exact
           backend:
             service:
