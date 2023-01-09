@@ -62,27 +62,28 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
 
-          #      - name: Creating kubernetes cluster
-          #run: |
-          #aws eks create-cluster --name simple-bank \
-          #    --role-arn arn:aws:iam::042418029664:role/eksClusterRole \
-          #     --resources-vpc-config subnetIds=subnet-009fb3d24d9b1cf38,subnet-0c608ad906dabe5c3,securityGroupIds=sg-0e860bf67b9e631a6;
-          #sleep 1200
-          #- name: Creating node group
-          #run: |
-          #aws eks create-nodegroup --nodegroup-name simple-bank-node \
-          #       --cluster-name simple-bank \
-          #       --scaling-config minSize=2,maxSize=2,desiredSize=2 \
-          #       --subnets "subnet-009fb3d24d9b1cf38" "subnet-0c608ad906dabe5c3" --instance-types "t2.micro" --ami-type "AL2_x86_64"  \
-          #       --node-role arn:aws:iam::042418029664:role/AmazonEKSNodeRole --tags Name=kube-system;
-          #sleep 1200
+      - name: Creating kubernetes cluster
+        run: |
+          aws eks create-cluster --name simple-bank \
+              --role-arn arn:aws:iam::042418029664:role/eksClusterRole \
+               --resources-vpc-config subnetIds=subnet-009fb3d24d9b1cf38,subnet-0c608ad906dabe5c3,securityGroupIds=sg-0e860bf67b9e631a6;
+          sleep 1200
+          
+      - name: Creating node group
+        run: |
+          aws eks create-nodegroup --nodegroup-name simple-bank-node \
+                  --cluster-name simple-bank \
+                  --scaling-config minSize=2,maxSize=2,desiredSize=2 \
+                  --subnets "subnet-009fb3d24d9b1cf38" "subnet-0c608ad906dabe5c3" --instance-types "t2.micro" --ami-type "AL2_x86_64"  \
+                  --node-role arn:aws:iam::042418029664:role/AmazonEKSNodeRole --tags Name=kube-system;
+          sleep 1200
       - name: Update kube config
         run: aws eks update-kubeconfig --name simple-bank --region us-east-1
       
       - name: Deploy image to Amazon EKS
         run: |
            kubectl apply -f eks/aws-auth.yaml
-           #kubectl create secret docker-registry regcred --docker-server=ghcr.io --docker-username=sam3797 --docker-password=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 --docker-email=sampath16b@gmail.com
+           kubectl create secret docker-registry regcred --docker-server=ghcr.io --docker-username=sam3797 --docker-password=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 --docker-email=sampath16b@gmail.com
            #kubectl create secret docker-registry regcred1 --docker-server=ghcr.io --docker-username=IndhumathiParamasivam --docker-password=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 --docker-email=indhucse044@gmail.com
            kubectl apply -f eks/deployment.yaml
            kubectl apply -f eks/service.yaml
