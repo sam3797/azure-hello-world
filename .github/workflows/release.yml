@@ -85,4 +85,4 @@ jobs:
            kubectl create secret docker-registry regcred --docker-server=ghcr.io --docker-username=sam3797 --docker-password=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 --docker-email=sampath16b@gmail.com
            kubectl apply -f eks/deployment.yaml
            kubectl apply -f eks/service.yaml
-           kubectl apply -f eks/ingress.yaml
+           kubectl apply -f eks/ingressrule.yaml
