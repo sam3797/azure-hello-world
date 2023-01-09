@@ -7,9 +7,9 @@ metadata:
 spec:
     ingressClassName: ngnix
     rules:
-    - nginx:
+    - http:
         paths:
-        - path: /var/www/html/index.html
+        - path: /
           pathType: Exact
           backend:
             service:
