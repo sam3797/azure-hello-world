@@ -16,9 +16,9 @@ spec:
     spec:
       containers:
       - name: simple-bank-api
-        image: ghcr.io/sam3797/hello-world:master
+        image: ghcr.io/indhumathiparamasivam/helloworld-web:master
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
       imagePullSecrets:
-      - name: regcred
+      - name: regcred1
