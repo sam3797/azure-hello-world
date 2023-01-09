@@ -5,8 +5,10 @@ metadata:
 spec:
   selector:
     app: simple-bank-api
-  type: LoadBalancer
+    # type: LoadBalancer
   ports:
-  - nodePort: 31000
+          #- nodePort: 31000
+  - name: http
+    protocol: TCP
     port: 80
     targetPort: 8080
