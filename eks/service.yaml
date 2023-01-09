@@ -1,14 +1,16 @@
+# Service - LoadBalancer
+#lb.yaml
 apiVersion: v1
-kind: Service
+kind: Service	
 metadata:
-  name: simple-bank-api-service
+  name: my-service
+  labels:
+    app: nginx-app
 spec:
   selector:
-    app: simple-bank-api
-    type: LoadBalancer
+    app: nginx-app
+  type: LoadBalancer
   ports:
-          #- nodePort: 31000
-  - name: http
-    protocol: TCP
+  - nodePort: 31000
     port: 80
-    targetPort: 8080
+    targetPort: 80
