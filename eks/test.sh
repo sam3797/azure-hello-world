@@ -12,7 +12,7 @@ VERSION=$2
 kubectl apply -f deployment.yaml
 sleep 60;
 kubectl apply -f service.yaml
-sleep 120;
+sleep 180;
 kubectl apply -f deployment-1.yaml
 
 # Wait until the Deployment is ready by checking the MinimumReplicasAvailable condition.
@@ -24,6 +24,6 @@ done
 
 # Update the service selector with the new version
 #kubectl patch svc $SERVICE -p "{\"spec\":{\"selector\": {\"name\": \"${SERVICE}\", \"version\": \"${VERSION}\"}}}"
-kubectl patch svc $SERVICE -p "{\"spec\":{\"selector\": {\"app\": \"${VERSION}\"}}"
+kubectl patch svc $SERVICE -p "{\"spec\":{\"selector\": {\"app\": \"${VERSION}\"}}}"
 
 echo "Done."
