@@ -85,6 +85,9 @@ jobs:
            kubectl apply -f eks/aws-auth.yaml
            #kubectl create secret docker-registry regcred --docker-server=ghcr.io --docker-username=sam3797 --docker-password=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 --docker-email=sampath16b@gmail.com
            #kubectl create secret docker-registry regcred1 --docker-server=ghcr.io --docker-username=IndhumathiParamasivam --docker-password=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 --docker-email=indhucse044@gmail.com
-           kubectl apply -f eks/deployment-1.yaml
-           kubectl apply -f eks/service-1.yaml
-           kubectl apply -f eks/ingress.yaml
+           #kubectl apply -f eks/deployment-1.yaml
+           #kubectl apply -f eks/service-1.yaml
+           #kubectl apply -f eks/ingress.yaml
+           chmod 777 eks/test.sh
+           cd eks
+           ./test.sh
