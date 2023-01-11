@@ -88,6 +88,7 @@ jobs:
            #kubectl apply -f eks/deployment-1.yaml
            #kubectl apply -f eks/service-1.yaml
            #kubectl apply -f eks/ingress.yaml
+           apt install -y jq
            chmod 777 eks/test.sh
            cd eks
            ./test.sh nginx-deployment-1 nginx-app-1 my-service

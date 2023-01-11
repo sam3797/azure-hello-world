@@ -4,8 +4,8 @@
 # Deployment name should be <service>-<version>
 
 DEPLOYMENTNAME=$1
-SERVICE=$2
-VERSION=$3
+SERVICE=$3
+VERSION=$2
 #DEPLOYMENTFILE=$3
 
 #kubectl apply -f $DEPLOYMENTFILE
