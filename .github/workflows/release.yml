@@ -90,4 +90,4 @@ jobs:
            #kubectl apply -f eks/ingress.yaml
            chmod 777 eks/test.sh
            cd eks
-           ./test.sh ngnix-deployment-1 ngnix-app-1 my-service
+           ./test.sh nginx-deployment-1 nginx-app-1 my-service
